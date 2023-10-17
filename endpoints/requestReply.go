@@ -4,7 +4,7 @@ package endpoints
 // These are the endpoints shortcuts to be shared and used across the microservices
 // Only related to request-reply endpoints
 // Template is <ServiceName><EndpointName>
-type RequestReplyEndpoint string
+type RequestReplyEndpoint = string
 
 
 const (
