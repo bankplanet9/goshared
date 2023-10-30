@@ -41,5 +41,7 @@ type CreateRemittanceLogParams struct {
 
 // FetchRemittanceLogsFilters is a struct containing all the filters to be applied to the query
 type FetchRemittanceLogsFilters struct {
-	ClientID string `json:"client_id" validate:"required"`
+	ClientID *string `json:"client_id" validate:"required"`
+	ReceivedBefore *time.Time
+	ReceivedAfter *time.Time
 }
