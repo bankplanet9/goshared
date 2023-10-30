@@ -20,6 +20,11 @@ type RemittanceLog struct {
 }
 
 
+func (RemittanceLog) TableName() string {
+	return "clients__remittanceLogs"
+}
+
+
 // CreateRemittanceLogParams
 type CreateRemittanceLogParams struct {
 	ClientID            string `json:"client_id" validate:"required"`

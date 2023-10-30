@@ -9,3 +9,7 @@ type Client struct {
 
 	CreatedUpdatedMixin
 }
+
+func (Client) TableName() string {
+	return "clients_clients"
+}
