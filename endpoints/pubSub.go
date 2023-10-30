@@ -9,6 +9,7 @@ type PubSubEndpoint = string
 
 const (
 	RemittanceCreateRemittanceLog PubSubEndpoint = "REMITTANCE.create_remittance_log"
+	ScoringForecastLimitAssigned  PubSubEndpoint = "SCORING.forecast_limit_assigned"
 )
 
 func ScoringForecast(clientID string) PubSubEndpoint {
