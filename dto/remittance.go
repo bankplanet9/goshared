@@ -21,7 +21,7 @@ type RemittanceLog struct {
 
 
 func (RemittanceLog) TableName() string {
-	return "clients__remittanceLogs"
+	return "clients_remittanceLogs"
 }
 
 
