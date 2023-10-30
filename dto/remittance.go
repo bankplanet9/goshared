@@ -6,8 +6,6 @@ import "time"
 // RemittanceLog
 type RemittanceLog struct {
 	ID                  uint `gorm:"primaryKey" json:"id"`  // ID записи
-	CreatedAt           time.Time `json:"created_at"`  // Дата создания записи
-	UpdatedAt           time.Time `json:"updated_at"`  // Дата обновления записи
 	ClientID            string `json:"client_id" validate:"required"`  // ID клиента в системе
 	SentViaSystem       *string `json:"sent_via_system"`  // Система, с помощью которой отправлен/получен перевод
 	ReceivedAt          time.Time `json:"received_at" validate:"required"`  // Дата получения перевода
@@ -17,6 +15,8 @@ type RemittanceLog struct {
 	OriginCurrency      string  `json:"origin_currency" validate:"required"` // Валюта отправителя
 	DestinationAmount   float64 `json:"destination_amount" validate:"required"`  // Сумма получателя
 	DestinationCurrency string  `json:"destination_currency" validate:"required"` // Валюта получателя
+
+	CreatedUpdatedMixin
 }
 
 
