@@ -9,4 +9,5 @@ type RequestReplyEndpoint = string
 
 const (
 	RemittanceFetchRemittanceLogs RequestReplyEndpoint = "remittance.fetch_remittance_logs"
+	ScoringPerformCreditScoring RequestReplyEndpoint = "scoring.perform_credit_scoring"
 )
