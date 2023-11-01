@@ -8,9 +8,11 @@ type Client struct {
 	// Scoring
 	Limit           *float64   `json:"limit"`             // Сумма лимита
 	LimitAssignedAt *time.Time `json:"limit_assigned_at"` // Дата и время определения лимита
+	LimitRequestedAt *time.Time `json:"limit_requested_at"` // Дата и время запроса на определение лимита
 
 	// Credit History
 	HasGoodCreditHistory   bool       `json:"has_good_credit_history"`   // Индикатор качества кредитной истории (хорошая, плохая). Реализация определена микросервисом credit-history
+	CreditHistoryRequestedAt *time.Time `json:"credit_history_requested_at"` // Дата и время запроса на проверку кредитной истории
 	CreditHistoryCheckedAt *time.Time `json:"credit_history_checked_at"` // Дата и время осуществления проверки кредитной истории
 
 	RemittanceLogs []RemittanceLog `json:"-"`
