@@ -53,12 +53,12 @@ func TestClientIsPreApproved_BadClientNotQuotaAssigned(t *testing.T) {
 func TestClientIsPreApproved_NotIdentified(t *testing.T) {
 	limit := 1000.00
 	c := &Client{
-		IsIdentified:         true,
+		IsIdentified:         false,
 		HasGoodCreditHistory: nil,
 		Limit:                &limit,
 	}
 
-	if c.IsPreApproved() {
+	if !c.IsPreApproved() {
 		t.Fatal("User is not identified, has a limit assigned but has not been pre-approved")
 	}
 }

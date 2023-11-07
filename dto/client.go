@@ -20,7 +20,7 @@ type Client struct {
 
 	// Quota related
 	// Quota owners are customers with bad credit history, but Planet9 assigns them a limit up to X amount,
-	// defined in system configuration to give them a change to change their credit history
+	// defined in system configuration providing them an opportunity to improve their credit history
 	HasQuotaAssigned *bool      `json:"has_quota_assigned"` // Получил квоту будучи плохим клиентом (да, нет)
 	QuotaAssignedAt  *time.Time `json:"quota_assigned_at"`  // Дата и время назначения квоты
 
@@ -52,4 +52,22 @@ func (c Client) IsPreApproved() bool {
 
 	// Default case: not pre-approved.
 	return false
+}
+
+
+// AssignLimit assigns a limit to client
+func (c *Client) AssignLimit(limit float64) {
+	now := time.Now().UTC()
+	c.Limit = &limit
+	c.LimitAssignedAt = &now
+}
+
+
+// AssignQuota assigns a limit to client and mark it as a quota
+func (c *Client) AssignQuota(limit float64) {
+	now := time.Now().UTC()
+	quotaAssigned := true
+	c.Limit = &limit
+	c.HasQuotaAssigned = &quotaAssigned
+	c.QuotaAssignedAt = &now
 }
