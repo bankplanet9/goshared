@@ -71,3 +71,4 @@ func (c *Client) AssignQuota(limit float64) {
 	c.HasQuotaAssigned = &quotaAssigned
 	c.QuotaAssignedAt = &now
 }
+
