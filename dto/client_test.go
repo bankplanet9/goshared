@@ -62,3 +62,27 @@ func TestClientIsPreApproved_NotIdentified(t *testing.T) {
 		t.Fatal("User is not identified, has a limit assigned but has not been pre-approved")
 	}
 }
+
+
+func TestClientAssignLimit_Assigned(t *testing.T) {
+	limit := 1000.00
+	c := &Client{
+	}
+	c.AssignLimit(limit)
+
+	if *c.Limit != limit {
+		t.Fatal("User has been assigned a limit, but the final limit differs from the assigned one")
+	}
+}
+
+
+func TestClientAssignQuota_Assigned(t *testing.T) {
+	limit := 1000.00
+	c := &Client{
+	}
+	c.AssignQuota(limit)
+
+	if *c.Limit != limit {
+		t.Fatal("User has been assigned a quota, but the final limit differs from the assigned one")
+	}
+}
