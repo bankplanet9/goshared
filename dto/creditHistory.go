@@ -2,8 +2,8 @@ package dto
 
 // CreditHistoryLog represents an ORM model for credit history checks stored in DB
 type CreditHistoryLog struct {
-	ID       uint   `json:"id" gorm:"primaryKey,index:id_client_id,unique"` // ID записи в базе данных
-	ClientID string `json:"client_id" gorm:"index:id_client_id,unique"`     // ID клиента
+	ID       uint   `json:"id" gorm:"primaryKey"` // ID записи в базе данных
+	ClientID string `json:"client_id"`     // ID клиента
 
 	ReportID          *string `json:"report_id" gorm:"unique"` // ID отчета кредитной истории в системе провайдера кредитной истории
 	IsBadBorrower     *bool   `json:"is_bad_client"`           // Плохой заёмщик (binary)

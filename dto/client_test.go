@@ -63,11 +63,9 @@ func TestClientIsPreApproved_NotIdentified(t *testing.T) {
 	}
 }
 
-
 func TestClientAssignLimit_Assigned(t *testing.T) {
 	limit := 1000.00
-	c := &Client{
-	}
+	c := &Client{}
 	c.AssignLimit(limit)
 
 	if *c.Limit != limit {
@@ -75,11 +73,9 @@ func TestClientAssignLimit_Assigned(t *testing.T) {
 	}
 }
 
-
 func TestClientAssignQuota_Assigned(t *testing.T) {
 	limit := 1000.00
-	c := &Client{
-	}
+	c := &Client{}
 	c.AssignQuota(limit)
 
 	if *c.Limit != limit {
