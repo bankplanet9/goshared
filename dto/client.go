@@ -72,3 +72,9 @@ func (c *Client) AssignQuota(limit float64) {
 	c.QuotaAssignedAt = &now
 }
 
+
+
+
+type FetchClientParams struct {
+	ClientID string  `json:"client_id" validate:"required"`
+}
