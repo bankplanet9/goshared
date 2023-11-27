@@ -8,12 +8,12 @@ import "fmt"
 type PubSubEndpoint = string
 
 const (
-	RemittanceCreateRemittanceLog PubSubEndpoint = "REMITTANCE.create_remittance_log"
+	RemittanceCreateRemittanceLog       PubSubEndpoint = "REMITTANCE.create_remittance_log"
 	RemittanceCreateRemittanceLogsBatch PubSubEndpoint = "REMITTANCE.create_remittance_logs_batch"
-	RemittanceClientUpdated PubSubEndpoint = "REMITTANCE.client_updated"
-	ScoringForecastLimitAssigned  PubSubEndpoint = "SCORING.forecast_limit_assigned"
-	CreditHistoryCheck PubSubEndpoint = "CREDIT_HISTORY.check"
-	CreditHistoryChecked PubSubEndpoint = "CREDIT_HISTORY.checked"
+	RemittanceClientUpdated             PubSubEndpoint = "REMITTANCE.client_updated"
+	ScoringForecastLimitAssigned        PubSubEndpoint = "SCORING.forecast_limit_assigned"
+	CreditHistoryCheck                  PubSubEndpoint = "CREDIT_HISTORY.check"
+	CreditHistoryChecked                PubSubEndpoint = "CREDIT_HISTORY.checked"
 )
 
 func ScoringForecast(clientID string) PubSubEndpoint {
