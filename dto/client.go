@@ -17,6 +17,7 @@ type Client struct {
 	HasGoodCreditHistory     *bool      `json:"has_good_credit_history"`     // Индикатор качества кредитной истории (хорошая, плохая). Реализация определена микросервисом credit-history
 	CreditHistoryRequestedAt *time.Time `json:"credit_history_requested_at"` // Дата и время запроса на проверку кредитной истории
 	CreditHistoryCheckedAt   *time.Time `json:"credit_history_checked_at"`   // Дата и время осуществления проверки кредитной истории
+	LastCreditHistoryReportId *string `json:"last_credit_history_report_id"`  // ID последнего проверенного отчета по кредитной истории данного клиента
 
 	// Quota related
 	// Quota owners are customers with bad credit history, but Planet9 assigns them a limit up to X amount,
