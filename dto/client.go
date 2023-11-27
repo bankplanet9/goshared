@@ -73,7 +73,10 @@ func (c *Client) AssignQuota(limit float64) {
 
 // HasValidCreditHistory shows whether a credit history (if exists) is valid to rely on
 func (c *Client) HasValidCreditHistory() bool {
-	return c.HasGoodCreditHistory != nil && c.CreditHistoryCheckedAt.Before(time.Now().UTC().AddDate(0, -1, 0))
+	if c.HasGoodCreditHistory == nil {
+		return false
+	}
+	return c.CreditHistoryCheckedAt.Before(time.Now().UTC().AddDate(0, -1, 0))
 }
 
 type FetchClientParams struct {
