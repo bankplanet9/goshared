@@ -14,10 +14,10 @@ type Client struct {
 	LimitRequestedAt *time.Time `json:"limit_requested_at"` // Дата и время запроса на определение лимита
 
 	// Credit History
-	HasGoodCreditHistory     *bool      `json:"has_good_credit_history"`     // Индикатор качества кредитной истории (хорошая, плохая). Реализация определена микросервисом credit-history
-	CreditHistoryRequestedAt *time.Time `json:"credit_history_requested_at"` // Дата и время запроса на проверку кредитной истории
-	CreditHistoryCheckedAt   *time.Time `json:"credit_history_checked_at"`   // Дата и время осуществления проверки кредитной истории
-	LastCreditHistoryReportId *string `json:"last_credit_history_report_id"`  // ID последнего проверенного отчета по кредитной истории данного клиента
+	HasGoodCreditHistory      *bool      `json:"has_good_credit_history"`       // Индикатор качества кредитной истории (хорошая, плохая). Реализация определена микросервисом credit-history
+	CreditHistoryRequestedAt  *time.Time `json:"credit_history_requested_at"`   // Дата и время запроса на проверку кредитной истории
+	CreditHistoryCheckedAt    *time.Time `json:"credit_history_checked_at"`     // Дата и время осуществления проверки кредитной истории
+	LastCreditHistoryReportId *string    `json:"last_credit_history_report_id"` // ID последнего проверенного отчета по кредитной истории данного клиента
 
 	// Quota related
 	// Quota owners are customers with bad credit history, but Planet9 assigns them a limit up to X amount,
@@ -55,14 +55,12 @@ func (c Client) IsPreApproved() bool {
 	return false
 }
 
-
 // AssignLimit assigns a limit to client
 func (c *Client) AssignLimit(limit float64) {
 	now := time.Now().UTC()
 	c.Limit = &limit
 	c.LimitAssignedAt = &now
 }
-
 
 // AssignQuota assigns a limit to client and mark it as a quota
 func (c *Client) AssignQuota(limit float64) {
@@ -73,9 +71,11 @@ func (c *Client) AssignQuota(limit float64) {
 	c.QuotaAssignedAt = &now
 }
 
-
-
+// HasValidCreditHistory shows whether a credit history (if exists) is valid to rely on
+func (c *Client) HasValidCreditHistory() bool {
+	return *c.HasGoodCreditHistory && c.CreditHistoryCheckedAt.Before(time.Now().UTC().AddDate(0, -1, 0))
+}
 
 type FetchClientParams struct {
-	ClientID string  `json:"client_id" validate:"required"`
+	ClientID string `json:"client_id" validate:"required"`
 }
