@@ -14,6 +14,7 @@ const (
 	ScoringForecastLimitAssigned        PubSubEndpoint = "SCORING.forecast_limit_assigned"
 	CreditHistoryCheck                  PubSubEndpoint = "CREDIT_HISTORY.check"
 	CreditHistoryChecked                PubSubEndpoint = "CREDIT_HISTORY.checked"
+	LoanApplicationCompleted             PubSubEndpoint = "LOANAPP.completed"
 )
 
 func ScoringForecast(clientID string) PubSubEndpoint {
