@@ -27,6 +27,9 @@ type Client struct {
 
 	RemittanceLogs []RemittanceLog `json:"-"`
 
+	// External notifications to partners
+	PartnerPreApprovalNotifiedAt *time.Time `json:"partner_pre_approval_notified_at"`
+
 	CreatedUpdatedMixin
 }
 
