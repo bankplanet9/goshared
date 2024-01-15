@@ -79,7 +79,7 @@ func (c *Client) HasValidCreditHistory() bool {
 	if c.HasGoodCreditHistory == nil {
 		return false
 	}
-	return c.CreditHistoryCheckedAt.After(time.Now().UTC().AddDate(0, -1, 0))
+	return c.CreditHistoryCheckedAt.After(time.Now().UTC().AddDate(0, 0, -5))
 }
 
 type FetchClientParams struct {
