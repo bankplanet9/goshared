@@ -50,7 +50,7 @@ func (c Client) IsPreApproved() bool {
 	}
 
 	// If the client is identified and has a bad credit history with a quota & limit assigned, they are pre-approved.
-	if c.IsIdentified && c.HasGoodCreditHistory != nil && !*c.HasGoodCreditHistory && *c.HasQuotaAssigned && c.Limit != nil {
+	if c.IsIdentified && c.HasGoodCreditHistory != nil && !*c.HasGoodCreditHistory && c.HasQuotaAssigned != nil && *c.HasQuotaAssigned && c.Limit != nil {
 		return true
 	}
 
