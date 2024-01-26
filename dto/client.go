@@ -40,7 +40,7 @@ func (Client) TableName() string {
 // IsPreApproved determines whether we can provide a loan to the client or not.
 func (c Client) IsPreApproved() bool {
 	// If the client is not identified, they must at least have a limit to be pre-approved.
-	if !c.IsIdentified && c.Limit != nil {
+	if !c.IsIdentified && c.Limit == nil {
 		return true
 	}
 
