@@ -19,6 +19,11 @@ type Client struct {
 	CreditHistoryCheckedAt    *time.Time `json:"credit_history_checked_at"`     // Дата и время осуществления проверки кредитной истории
 	LastCreditHistoryReportId *string    `json:"last_credit_history_report_id"` // ID последнего проверенного отчета по кредитной истории данного клиента
 
+	// Validity
+	IsValid *bool `json:"is_valid"` // Флаг валидности клиента
+	InvalidReason *string `json:"invalid_reason"` // Причина, по которой клиент не считается валидным
+	ValidityCheckedAt *time.Time `json:"validity_checked_at"` // Дата и время установки флага IsValid
+
 	// Quota related
 	// Quota owners are customers with bad credit history, but Planet9 assigns them a limit up to X amount,
 	// defined in system configuration providing them an opportunity to improve their credit history
@@ -39,6 +44,11 @@ func (Client) TableName() string {
 
 // IsPreApproved determines whether we can provide a loan to the client or not.
 func (c Client) IsPreApproved() bool {
+	// If the client is not valid, they are not pre-approved
+	if c.IsValid != nil && !*c.IsValid {
+		return false
+	}
+
 	// If the client is not identified, they must at least have a limit to be pre-approved.
 	if !c.IsIdentified && c.Limit != nil {
 		return true

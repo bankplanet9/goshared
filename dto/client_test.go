@@ -82,3 +82,17 @@ func TestClientAssignQuota_Assigned(t *testing.T) {
 		t.Fatal("User has been assigned a quota, but the final limit differs from the assigned one")
 	}
 }
+
+
+func TestClientIsPreApproved_IsValid(t *testing.T) {
+	isValid := true
+	limit := 5000.00
+	c := &Client{
+		IsValid: &isValid,
+		Limit: &limit,
+	}
+
+	if !c.IsPreApproved() {
+		t.Fatal("User is valid but has been not pre-approved")
+	}
+}
